@@ -35,7 +35,7 @@ public class UserInterface {
             String input = scanner.nextLine().trim();
 
             switch (input.toUpperCase()) {
-                case "1" -> processGetByPriceRequest();
+                case "1" -> processGetByPriceRequest(scanner);
                 case "2" -> processGetByMakeModelRequest();
                 case "3" -> processGetByYearRequest();
                 case "4" -> processGetByColorRequest();
@@ -51,7 +51,15 @@ public class UserInterface {
         scanner.close();
     }
 
-    public void processGetByPriceRequest() {
+    public void processGetByPriceRequest(Scanner scanner) {
+        System.out.println("enter your minimum amount: ");
+        double min = scanner.nextDouble();
+
+        System.out.println("enter your maximum amount: ");
+        double max = scanner.nextDouble();
+        scanner.nextLine();
+
+        displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
     public void processGetByMakeModelRequest() {

@@ -1,6 +1,7 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Dealership {
@@ -46,7 +47,13 @@ public class Dealership {
      */
 
     public List<Vehicle> getVehiclesByPrice(double minPrice, double maxPrice) {
-        return null;
+        List<Vehicle> price = new ArrayList<>();
+        for (Vehicle vehicle : getAllVehicles()) {
+            if (vehicle.getPrice() >= minPrice && vehicle.getPrice() <= maxPrice){
+                price.add(vehicle);
+            }
+        }
+        return price;
     }
 
     public List<Vehicle> getVehiclesByMakeModel(String make, String model){
