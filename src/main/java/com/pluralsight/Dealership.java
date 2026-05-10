@@ -81,6 +81,7 @@ public class Dealership {
         for (Vehicle vehicle : getAllVehicles()) {
             if (vehicle.getColor().trim().equalsIgnoreCase(color)){
                 carColor.add(vehicle);
+
             }
         }
         return carColor;
