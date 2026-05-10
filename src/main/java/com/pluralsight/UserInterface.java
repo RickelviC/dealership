@@ -53,13 +53,13 @@ public class UserInterface {
 
     public void processGetByPriceRequest(Scanner scanner) {
         System.out.println("enter your minimum amount: ");
-        double min = scanner.nextDouble();
+        double minPrice = scanner.nextDouble();
 
         System.out.println("enter your maximum amount: ");
-        double max = scanner.nextDouble();
+        double maxPrice = scanner.nextDouble();
         scanner.nextLine();
 
-        displayVehicles(dealership.getVehiclesByPrice(min, max));
+        displayVehicles(dealership.getVehiclesByPrice(minPrice, maxPrice));
     }
 
     public void processGetByMakeModelRequest(Scanner scanner) {
@@ -74,13 +74,13 @@ public class UserInterface {
 
     public void processGetByYearRequest(Scanner scanner) {
         System.out.println("enter your minimum year: ");
-        int min = scanner.nextInt();
+        int minYear = scanner.nextInt();
 
         System.out.println("enter your maximum year: ");
-        int max = scanner.nextInt();
+        int maxYear = scanner.nextInt();
         scanner.nextLine();
 
-        displayVehicles(dealership.getVehiclesByYear(min,max));
+        displayVehicles(dealership.getVehiclesByYear(minYear,maxYear));
     }
 
     public void processGetByColorRequest(Scanner scanner) {
@@ -91,6 +91,15 @@ public class UserInterface {
     }
 
     public void processGetByMileageRequest(Scanner scanner) {
+        System.out.println("enter your minimum year: ");
+        int minMileage = scanner.nextInt();
+
+        System.out.println("enter your maximum year: ");
+        int maxMileage = scanner.nextInt();
+        scanner.nextLine();
+
+
+        displayVehicles(dealership.getVehiclesByMileage(minMileage,maxMileage));
     }
 
     public void processGetByVehicleTypeRequest(Scanner scanner) {

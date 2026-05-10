@@ -86,7 +86,7 @@ public class Dealership {
         return carColor;
     }
 
-    public List<Vehicle> getVehiclesByMileage(int minMileage, double maxMileage) {
+    public List<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage) {
         List<Vehicle> Mileage = new ArrayList<>();
         for (Vehicle vehicle : getAllVehicles()) {
             if (vehicle.getOdometer() >= minMileage && vehicle.getOdometer() <= maxMileage){
