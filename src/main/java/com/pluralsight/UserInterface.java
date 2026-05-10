@@ -36,11 +36,11 @@ public class UserInterface {
 
             switch (input.toUpperCase()) {
                 case "1" -> processGetByPriceRequest(scanner);
-                case "2" -> processGetByMakeModelRequest();
-                case "3" -> processGetByYearRequest();
-                case "4" -> processGetByColorRequest();
-                case "5" -> processGetByMileageRequest();
-                case "6" -> processGetByVehicleTypeRequest();
+                case "2" -> processGetByMakeModelRequest(scanner);
+                case "3" -> processGetByYearRequest(scanner);
+                case "4" -> processGetByColorRequest(scanner);
+                case "5" -> processGetByMileageRequest(scanner);
+                case "6" -> processGetByVehicleTypeRequest(scanner);
                 case "7" -> processAllVehiclesRequest();
                 case "8" -> processAddVehicleRequest();
                 case "9" -> processRemoveVehicleRequest();
@@ -62,19 +62,38 @@ public class UserInterface {
         displayVehicles(dealership.getVehiclesByPrice(min, max));
     }
 
-    public void processGetByMakeModelRequest() {
+    public void processGetByMakeModelRequest(Scanner scanner) {
+        System.out.println("enter your car make: ");
+        String make = scanner.nextLine();
+
+        System.out.println("enter your car model: ");
+        String model = scanner.nextLine();
+
+        displayVehicles(dealership.getVehiclesByMakeModel(make,model));
     }
 
-    public void processGetByYearRequest() {
+    public void processGetByYearRequest(Scanner scanner) {
+        System.out.println("enter your minimum year: ");
+        int min = scanner.nextInt();
+
+        System.out.println("enter your maximum year: ");
+        int max = scanner.nextInt();
+        scanner.nextLine();
+
+        displayVehicles(dealership.getVehiclesByYear(min,max));
     }
 
-    public void processGetByColorRequest() {
+    public void processGetByColorRequest(Scanner scanner) {
+        System.out.println("enter your maximum year: ");
+        String color = scanner.nextLine();
+
+        displayVehicles(dealership.getVehiclesByColor(color));
     }
 
-    public void processGetByMileageRequest() {
+    public void processGetByMileageRequest(Scanner scanner) {
     }
 
-    public void processGetByVehicleTypeRequest() {
+    public void processGetByVehicleTypeRequest(Scanner scanner) {
     }
 
     public void processAllVehiclesRequest() {
@@ -82,7 +101,6 @@ public class UserInterface {
     }
 
     public void processAddVehicleRequest() {
-
 
     }
 
