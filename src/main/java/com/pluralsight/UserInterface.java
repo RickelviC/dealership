@@ -41,7 +41,7 @@ public class UserInterface {
                 case "4" -> processGetByColorRequest();
                 case "5" -> processGetByMileageRequest();
                 case "6" -> processGetByVehicleTypeRequest();
-                case "7" -> processGetByAllVehiclesRequest();
+                case "7" -> processAllVehiclesRequest();
                 case "8" -> processAddVehicleRequest();
                 case "9" -> processRemoveVehicleRequest();
                 case "99" -> running = false;
@@ -69,7 +69,8 @@ public class UserInterface {
     public void processGetByVehicleTypeRequest() {
     }
 
-    public void processGetByAllVehiclesRequest() {
+    public void processAllVehiclesRequest() {
+        displayVehicles(dealership.getAllVehicles());
     }
 
     public void processAddVehicleRequest() {
@@ -86,15 +87,11 @@ public class UserInterface {
         this.dealership = manager.getDealership();
     }
 
-    /*private void displayVehicles(Dealership list) {
-        for (Vehicle allVehicle : list.getAllVehicles()) {
-            System.out.println(allVehicle);
-        }
-    }*/
-
-    /*private void displayVehicles(String input, List<Vehicle> inventory) {
+    private void displayVehicles(List<Vehicle> inventory) {
         for (Vehicle vehicle : inventory) {
-            if (vehicle.getVehicleType().equalsIgnoreCase(input));
+            System.out.println(vehicle.getVin() + " | " + vehicle.getYear() + " | " + vehicle.getMake()
+                    + " | " + vehicle.getModel() + " | " + vehicle.getVehicleType() + " | "
+                    + vehicle.getColor() + " | " + vehicle.getOdometer() + " | " + vehicle.getPrice());
         }
-    }*/
+    }
 }
