@@ -64,10 +64,10 @@ public class UserInterface {
 
     public void processGetByMakeModelRequest(Scanner scanner) {
         System.out.println("enter your car make: ");
-        String make = scanner.nextLine();
+        String make = scanner.nextLine().trim();
 
         System.out.println("enter your car model: ");
-        String model = scanner.nextLine();
+        String model = scanner.nextLine().trim();
 
         displayVehicles(dealership.getVehiclesByMakeModel(make, model));
     }
@@ -85,7 +85,7 @@ public class UserInterface {
 
     public void processGetByColorRequest(Scanner scanner) {
         System.out.println("enter your maximum year: ");
-        String color = scanner.nextLine();
+        String color = scanner.nextLine().trim();
 
         displayVehicles(dealership.getVehiclesByColor(color));
     }
@@ -103,7 +103,7 @@ public class UserInterface {
 
     public void processGetByVehicleTypeRequest(Scanner scanner) {
         System.out.println("enter the car type: ");
-        String carType = scanner.nextLine();
+        String carType = scanner.nextLine().trim();
 
         displayVehicles(dealership.getVehiclesByType(carType));
     }
@@ -126,6 +126,7 @@ public class UserInterface {
     }
 
     private void displayVehicles(List<Vehicle> inventory) {
+        //sort the list
         for (Vehicle vehicle : inventory) {
             System.out.println(vehicle.getVin() + " | " + vehicle.getYear() + " | " + vehicle.getMake()
                     + " | " + vehicle.getModel() + " | " + vehicle.getVehicleType() + " | "
