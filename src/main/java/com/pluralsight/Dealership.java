@@ -81,7 +81,6 @@ public class Dealership {
         for (Vehicle vehicle : getAllVehicles()) {
             if (vehicle.getColor().trim().equalsIgnoreCase(color)){
                 carColor.add(vehicle);
-
             }
         }
         return carColor;
@@ -96,6 +95,7 @@ public class Dealership {
         }
         return Mileage;
     }
+
     public List<Vehicle> getVehiclesByType(String vehicleType) {
         List<Vehicle> carType = new ArrayList<>();
         for (Vehicle vehicle : getAllVehicles()) {
@@ -113,6 +113,7 @@ public class Dealership {
     public void addVehicle(Vehicle vehicle) {
         inventory.add(vehicle);
     }
+
     public void removeVehicle(Vehicle vehicle) {
         inventory.remove(vehicle);
     }
