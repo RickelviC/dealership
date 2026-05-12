@@ -84,7 +84,7 @@ public class UserInterface {
     }
 
     public void processGetByColorRequest(Scanner scanner) {
-        System.out.println("enter your maximum year: ");
+        System.out.println("enter your car color: ");
         String color = scanner.nextLine().trim();
 
         displayVehicles(dealership.getVehiclesByColor(color));
@@ -140,7 +140,8 @@ public class UserInterface {
         double price = scanner.nextDouble();
         scanner.nextLine();
 
-        dealership.addVehicle(new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));
+        dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
+        new DealershipFileManager().saveDealership(dealership);
 
 
     }
@@ -152,7 +153,6 @@ public class UserInterface {
     private void init() {
         DealershipFileManager manager = new DealershipFileManager();
         dealership = manager.getDealership();
-        manager.saveDealership(dealership);
     }
 
     private void displayVehicles(List<Vehicle> inventory) {
