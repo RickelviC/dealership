@@ -42,7 +42,7 @@ public class UserInterface {
                 case "5" -> processGetByMileageRequest(scanner);
                 case "6" -> processGetByVehicleTypeRequest(scanner);
                 case "7" -> processAllVehiclesRequest();
-                case "8" -> processAddVehicleRequest();
+                case "8" -> processAddVehicleRequest(scanner);
                 case "9" -> processRemoveVehicleRequest();
                 case "99" -> running = false;
                 default -> System.out.println("Invalid option");
@@ -112,7 +112,36 @@ public class UserInterface {
         displayVehicles(dealership.getAllVehicles());
     }
 
-    public void processAddVehicleRequest() {
+    public void processAddVehicleRequest(Scanner scanner) {
+
+        System.out.println("enter your cars VIN: ");
+        int vin = scanner.nextInt();
+
+        System.out.println("enter your cars year: ");
+        int year = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("enter your car make: ");
+        String make = scanner.nextLine().trim();
+
+        System.out.println("enter your car model: ");
+        String model = scanner.nextLine().trim();
+
+        System.out.println("enter the car type: ");
+        String vehicleType = scanner.nextLine().trim();
+
+        System.out.println("enter your car color: ");
+        String color = scanner.nextLine().trim();
+
+        System.out.println("enter your cars mileage: ");
+        int odometer = scanner.nextInt();
+
+        System.out.println("enter your cars price: ");
+        double price = scanner.nextDouble();
+        scanner.nextLine();
+
+        dealership.addVehicle(new Vehicle(vin,year,make,model,vehicleType,color,odometer,price));
+
 
     }
 
@@ -122,7 +151,8 @@ public class UserInterface {
     //helpers
     private void init() {
         DealershipFileManager manager = new DealershipFileManager();
-        this.dealership = manager.getDealership();
+        dealership = manager.getDealership();
+        manager.saveDealership(dealership);
     }
 
     private void displayVehicles(List<Vehicle> inventory) {
