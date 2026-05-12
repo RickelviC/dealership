@@ -43,7 +43,7 @@ public class UserInterface {
                 case "6" -> processGetByVehicleTypeRequest(scanner);
                 case "7" -> processAllVehiclesRequest();
                 case "8" -> processAddVehicleRequest(scanner);
-                case "9" -> processRemoveVehicleRequest();
+                case "9" -> processRemoveVehicleRequest(scanner);
                 case "99" -> running = false;
                 default -> System.out.println("Invalid option");
             }
@@ -114,6 +114,37 @@ public class UserInterface {
 
     public void processAddVehicleRequest(Scanner scanner) {
 
+        Result result = getResult(scanner);
+
+        dealership.addVehicle(new Vehicle(result.vin(), result.year(), result.make(), result.model(), result.vehicleType(), result.color(), result.odometer(), result.price()));
+        new DealershipFileManager().saveDealership(dealership);
+
+    }
+
+
+    public void processRemoveVehicleRequest(Scanner scanner) {
+        Result result = getResult(scanner);
+        /*
+        dealership.removeVehicle(new Vehicle(result.vin(), result.year(), result.make(), result.model(), result.vehicleType(), result.color(), result.odometer(), result.price()));
+        new DealershipFileManager().saveDealership(dealership);*/
+    }
+
+    //helpers
+    private void init() {
+        DealershipFileManager manager = new DealershipFileManager();
+        dealership = manager.getDealership();
+    }
+
+    private void displayVehicles(List<Vehicle> inventory) {
+        //sort the list
+        for (Vehicle vehicle : inventory) {
+            System.out.println(vehicle.getVin() + " | " + vehicle.getYear() + " | " + vehicle.getMake()
+                    + " | " + vehicle.getModel() + " | " + vehicle.getVehicleType() + " | "
+                    + vehicle.getColor() + " | " + vehicle.getOdometer() + " | " + vehicle.getPrice());
+        }
+    }
+
+    private static Result getResult(Scanner scanner) {
         System.out.println("enter your cars VIN: ");
         int vin = scanner.nextInt();
 
@@ -140,27 +171,9 @@ public class UserInterface {
         double price = scanner.nextDouble();
         scanner.nextLine();
 
-        dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
-        new DealershipFileManager().saveDealership(dealership);
-
-
+        return new Result(vin, year, make, model, vehicleType, color, odometer, price);
     }
 
-    public void processRemoveVehicleRequest() {
-    }
-
-    //helpers
-    private void init() {
-        DealershipFileManager manager = new DealershipFileManager();
-        dealership = manager.getDealership();
-    }
-
-    private void displayVehicles(List<Vehicle> inventory) {
-        //sort the list
-        for (Vehicle vehicle : inventory) {
-            System.out.println(vehicle.getVin() + " | " + vehicle.getYear() + " | " + vehicle.getMake()
-                    + " | " + vehicle.getModel() + " | " + vehicle.getVehicleType() + " | "
-                    + vehicle.getColor() + " | " + vehicle.getOdometer() + " | " + vehicle.getPrice());
-        }
+    private record Result(int vin, int year, String make, String model, String vehicleType, String color, int odometer, double price) {
     }
 }
