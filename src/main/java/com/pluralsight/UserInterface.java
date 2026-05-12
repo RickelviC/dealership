@@ -205,6 +205,9 @@ public class UserInterface {
                     + " | " + vehicle.getModel() + " | " + vehicle.getVehicleType() + " | "
                     + vehicle.getColor() + " | " + vehicle.getOdometer() + " | " + vehicle.getPrice());
         }
+        if (inventory.isEmpty()){
+            System.out.println("No match found");
+        }
     }
 
 }
