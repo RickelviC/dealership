@@ -52,11 +52,37 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest(Scanner scanner) {
-        System.out.println("enter your minimum amount: ");
-        double minPrice = scanner.nextDouble();
+        System.out.println("Enter your minimum amount: ");
+        double minPrice = 0;
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                minPrice = scanner.nextDouble();
+                if (minPrice > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+                scanner.next();
+            }
+        }
 
-        System.out.println("enter your maximum amount: ");
-        double maxPrice = scanner.nextDouble();
+        System.out.println("Enter your maximum amount: ");
+        double maxPrice = 0;
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                maxPrice = scanner.nextDouble();
+                if (maxPrice > minPrice) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than your minimum (" + minPrice + "): ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+                scanner.next();
+            }
+        }
         scanner.nextLine();
 
         displayVehicles(dealership.getVehiclesByPrice(minPrice, maxPrice));
