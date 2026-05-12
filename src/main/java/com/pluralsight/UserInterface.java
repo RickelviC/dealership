@@ -76,7 +76,7 @@ public class UserInterface {
                 if (maxPrice > minPrice) {
                     break;
                 } else {
-                    System.out.println("Enter a number greater than your minimum (" + minPrice + "): ");
+                    System.out.println("Enter a number bigger than your minimum (" + minPrice + "): ");
                 }
             } else {
                 System.out.println("Enter a number: ");
