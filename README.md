@@ -1,63 +1,20 @@
-# ledger-app
+# Dealership
 
 ## Description of the Project
 
-this is a simple command line ledger app
-application. The application has a CLI user
-interface, the sure has some options as to
-what they would like to do. in the main menu
-the user can use
-
-### main menu
-
-D) Add Deposit.
-
-P) Make Payment (Debit).
-
-L) Ledger.
-
-X) Exit.
-
-L) there is going to be another menu.
-
-### Ledger menu
-
-A) All - Display all entries.
-
-D) Deposits - Display only the entries that are deposits into the account.
-
-P) Payments - Display only the negative entries (or payments).
-
-R) Reports - A new screen that allows the user to run pre-defined reports or
-to run a custom search.
-
-H) Home - go back to the home page.
-
-### Reports menu
-(1) Month To Date
-
-(2) Previous Month
-
-(3) Year To Date
-
-(4) Previous Year
-
-(5) Search by Vendor - prompt the user for the vendor name and
-display all entries for that vendor
-
-(0) Back - go back to the Ledger page
+looks though the dealership.csv and loads it into an array. the user has options to look by price,
+ make/model, year, color, mileage, vehicle type. the user can also add or remove an item from the list.
 
 
 
 ## User Stories
 
-as a customer I want to be able to deposit money, and it is saved.
+as a customer i would like to have a main menu.
 
-as a customer I want to be able to see a ledger of my history, so I know what has been paid.
+as a manager i would like to save all sells to a cvs file
 
-as a customer I want to be able to search for a report by date or time.
+make Dealership class to hold all information of the dealership and hold the vehicles from the vehicle class
 
-as a customer I want to be able to search by any type of filter I want.
 ## Setup
 Instructions on how to set up and run the project using IntelliJ IDEA.
 
@@ -82,11 +39,8 @@ Follow these steps to get your application running within IntelliJ IDEA:
 - Any additional libraries or frameworks used in the project.
 
 ## Demo One
-![Demo](./img/ledger-app.gif)
+![Demo](./img/dealership.gif)
 
-## Demo Two
-
-![Demo](./img/ledger-app(2).gif)
 ## Future Work
 
 Outline potential future enhancements or functionalities you might consider adding:
@@ -103,7 +57,7 @@ List resources such as tutorials, articles, or documentation that helped you dur
 
 ## Team Members
 
-- **Rickelvi Cruz** - Project Lead.
+- **Rickelvi Cruz** - Project owner.
 
 
 ## Thanks
