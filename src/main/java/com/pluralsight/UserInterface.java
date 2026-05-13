@@ -53,7 +53,7 @@ public class UserInterface {
 
     public void processGetByPriceRequest(Scanner scanner) {
         System.out.println("Enter your minimum amount: ");
-        double minPrice = 0;
+        double minPrice;
         while (true) {
             if (scanner.hasNextDouble()) {
                 minPrice = scanner.nextDouble();
@@ -63,12 +63,13 @@ public class UserInterface {
                     System.out.println("Enter a number greater than 0: ");
                 }
             } else {
+                scanner.nextLine();
                 System.out.println("Enter a number: ");
             }
         }
 
         System.out.println("Enter your maximum amount: ");
-        double maxPrice = 0;
+        double maxPrice;
         while (true) {
             if (scanner.hasNextDouble()) {
                 maxPrice = scanner.nextDouble();
@@ -78,6 +79,7 @@ public class UserInterface {
                     System.out.println("Enter a number bigger than your minimum (" + minPrice + "): ");
                 }
             } else {
+                scanner.nextLine();
                 System.out.println("Enter a number: ");
             }
         }
@@ -107,6 +109,7 @@ public class UserInterface {
                     System.out.println("Enter a number greater than 0: ");
                 }
             } else {
+                scanner.nextLine();
                 System.out.println("Enter a number: ");
             }
         }
@@ -122,6 +125,7 @@ public class UserInterface {
                     System.out.println("Enter a number greater than 0: ");
                 }
             } else {
+                scanner.nextLine();
                 System.out.println("Enter a number: ");
             }
         }
@@ -148,6 +152,7 @@ public class UserInterface {
                     System.out.println("Enter a number greater than 0: ");
                 }
             } else {
+                scanner.nextLine();
                 System.out.println("Enter a number: ");
             }
         }
@@ -163,6 +168,7 @@ public class UserInterface {
                     System.out.println("Enter a number greater than 0: ");
                 }
             } else {
+                scanner.nextLine();
                 System.out.println("Enter a number: ");
             }
         }
@@ -184,11 +190,39 @@ public class UserInterface {
     public void processAddVehicleRequest(Scanner scanner) {
 
         System.out.println("enter your cars VIN: ");
-        int vin = scanner.nextInt();
+        int vin;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                vin = scanner.nextInt();
+                if (vin > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+                scanner.nextLine();
+            }
+        }
+
 
         System.out.println("enter your cars year: ");
-        int year = scanner.nextInt();
+        int year;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                year = scanner.nextInt();
+                if (year > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+                scanner.nextLine();
+            }
+        }
         scanner.nextLine();
+
 
         System.out.println("enter your car make: ");
         String make = scanner.nextLine().trim();
@@ -203,15 +237,42 @@ public class UserInterface {
         String color = scanner.nextLine().trim();
 
         System.out.println("enter your cars mileage: ");
-        int odometer = scanner.nextInt();
+        int odometer;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                odometer = scanner.nextInt();
+                if (odometer >= 0) {
+                    scanner.nextLine();
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+                scanner.nextLine();
+            }
+        }
 
         System.out.println("enter your cars price: ");
-        double price = scanner.nextDouble();
-        scanner.nextLine();
+        double price;
+        while (true) {
+            if (scanner.hasNextDouble()) {
+                price = scanner.nextDouble();
+                if (price > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+                scanner.nextLine();
+            }
+        }
+
 
         dealership.addVehicle(new Vehicle(vin, year, make, model, vehicleType, color, odometer, price));
         new DealershipFileManager().saveDealership(dealership);
-
+        scanner.nextLine();
     }
 
 
