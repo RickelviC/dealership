@@ -17,7 +17,7 @@ public class UserInterface {
         boolean running = true;
 
         while (running) {
-            System.out.println("\nWelcome to Ledger APP");
+            System.out.println("\nWelcome to my Dealership");
             System.out.println("-----------------------");
             System.out.println("Choose an option:");
             System.out.println("1) Get Vehicles by Price");
@@ -64,7 +64,6 @@ public class UserInterface {
                 }
             } else {
                 System.out.println("Enter a number: ");
-                scanner.next();
             }
         }
 
@@ -80,12 +79,10 @@ public class UserInterface {
                 }
             } else {
                 System.out.println("Enter a number: ");
-                scanner.next();
             }
         }
-        scanner.nextLine();
-
         displayVehicles(dealership.getVehiclesByPrice(minPrice, maxPrice));
+        scanner.nextLine();
     }
 
     public void processGetByMakeModelRequest(Scanner scanner) {
@@ -100,13 +97,36 @@ public class UserInterface {
 
     public void processGetByYearRequest(Scanner scanner) {
         System.out.println("enter your minimum year: ");
-        int minYear = scanner.nextInt();
+        int minYear;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                minYear = scanner.nextInt();
+                if (minYear > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+            }
+        }
 
         System.out.println("enter your maximum year: ");
-        int maxYear = scanner.nextInt();
-        scanner.nextLine();
-
+        int maxYear;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                maxYear = scanner.nextInt();
+                if (maxYear > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+            }
+        }
         displayVehicles(dealership.getVehiclesByYear(minYear, maxYear));
+        scanner.nextLine();
     }
 
     public void processGetByColorRequest(Scanner scanner) {
@@ -118,13 +138,36 @@ public class UserInterface {
 
     public void processGetByMileageRequest(Scanner scanner) {
         System.out.println("enter your minimum mileage: ");
-        int minMileage = scanner.nextInt();
+        int minMileage;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                minMileage = scanner.nextInt();
+                if (minMileage > 0) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+            }
+        }
 
         System.out.println("enter your maximum mileage: ");
-        int maxMileage = scanner.nextInt();
-        scanner.nextLine();
-
+        int maxMileage;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                maxMileage = scanner.nextInt();
+                if (maxMileage >= minMileage) {
+                    break;
+                } else {
+                    System.out.println("Enter a number greater than 0: ");
+                }
+            } else {
+                System.out.println("Enter a number: ");
+            }
+        }
         displayVehicles(dealership.getVehiclesByMileage(minMileage, maxMileage));
+        scanner.nextLine();
     }
 
     public void processGetByVehicleTypeRequest(Scanner scanner) {
@@ -199,15 +242,20 @@ public class UserInterface {
     }
 
     private void displayVehicles(List<Vehicle> inventory) {
-        //sort the list
+        System.out.println("---------------------------------------------------------------------------------------------------------");
+        System.out.printf(" %s |\t%s\t|\t%s\t|\t%s\t|\t%s\t|\t%s\t| \t %s \t |\t%s\t|\n", "Vin   ", "Year", "Make", "Model", "Vehicle Type",
+                "Color", "Odometer", "Price");
+        System.out.println("---------------------------------------------------------------------------------------------------------");
+
         for (Vehicle vehicle : inventory) {
-            System.out.println(vehicle.getVin() + " | " + vehicle.getYear() + " | " + vehicle.getMake()
-                    + " | " + vehicle.getModel() + " | " + vehicle.getVehicleType() + " | "
-                    + vehicle.getColor() + " | " + vehicle.getOdometer() + " | " + vehicle.getPrice());
+            System.out.printf("%s\t|\t%s\t|\t%s\t|\t%s\t|\t\t%s\t\t|\t%s\t|\t%s\t|\t%s|\n",
+                    vehicle.getVin(), vehicle.getYear(), vehicle.getMake(), vehicle.getModel(), vehicle.getVehicleType(),
+                    vehicle.getColor(), vehicle.getOdometer(), vehicle.getPrice());
         }
-        if (inventory.isEmpty()){
+        if (inventory.isEmpty()) {
             System.out.println("No match found");
         }
+        System.out.println("---------------------------------------------------------------------------------------------------------");
     }
 
 }
